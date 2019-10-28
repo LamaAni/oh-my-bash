@@ -41,8 +41,9 @@ function prompt_command() {
     # This needs to be first to save last command return code
     local RC="$?"
 
-    hostname="${bold_black}\u@\h"
-    virtualenv="${white}$(virtualenv_prompt)"
+    local very_gray="\e[38;5;237m"
+    hostname="\u@\h"
+    virtualenv="$(virtualenv_prompt)"
 
     # Set return status color
     if [[ ${RC} == 0 ]]; then
@@ -54,7 +55,9 @@ function prompt_command() {
     # Append new history lines to history file
     history -a
 
-    PS1="$(clock_prompt)$(scm_prompt_char_info)${ret_status}${bold_cyan}${PWD}"$'\n'"> ${normal}"
+    # original
+    # PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
+    PS1="$(clock_prompt)${virtualenv}$(scm_prompt_char_info)${ret_status}${bold_cyan}${PWD}${very_gray} -- ${hostname}"$'\n'"${reset_color}> ${normal}"
 }
 
 safe_append_prompt_command prompt_command
