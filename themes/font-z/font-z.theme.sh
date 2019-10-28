@@ -54,7 +54,7 @@ function prompt_command() {
     # Append new history lines to history file
     history -a
 
-    PS1="$(clock_prompt)${bold_cyan}${PWD} $(scm_prompt_char_info)${ret_status} ${virtualenv}${hostname}"$'\n'"> ${normal}"
+    PS1="$(clock_prompt)$(scm_prompt_char_info)${ret_status}${bold_cyan}${PWD}"$'\n'"> ${normal}"
 }
 
 safe_append_prompt_command prompt_command
