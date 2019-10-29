@@ -24,8 +24,8 @@
 SCM_NONE_CHAR=''
 SCM_THEME_PROMPT_DIRTY=" ${red}✗"
 SCM_THEME_PROMPT_CLEAN=""
-SCM_THEME_PROMPT_PREFIX="${green}|"
-SCM_THEME_PROMPT_SUFFIX="${green}|"
+SCM_THEME_PROMPT_PREFIX=" ${bold_green}"
+SCM_THEME_PROMPT_SUFFIX=" "
 SCM_GIT_SHOW_MINIMAL_INFO=true
 
 CLOCK_THEME_PROMPT_PREFIX=''
@@ -42,6 +42,7 @@ function prompt_command() {
     local RC="$?"
 
     local very_gray="\e[38;5;237m"
+    local virtual_env_color="\e[38;5;177m"
     hostname="\u@\h"
     virtualenv="$(virtualenv_prompt)"
 
@@ -57,7 +58,7 @@ function prompt_command() {
 
     # original
     # PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
-    PS1="$(clock_prompt)${virtualenv}$(scm_prompt_char_info)${ret_status}${bold_cyan}${PWD}${very_gray} -- ${hostname}"$'\n'"${reset_color}> ${normal}"
+    PS1="$(clock_prompt)${reset_color}${virtual_env_color}${virtualenv}${reset_color}$(scm_prompt_char_info)${ret_status}${bold_cyan} ${PWD}${very_gray} -- ${hostname}"$'\n'"${reset_color}> ${normal}"
 }
 
 safe_append_prompt_command prompt_command
