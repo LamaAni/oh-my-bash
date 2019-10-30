@@ -58,7 +58,7 @@ function prompt_command() {
 
     # original
     # PS1="$(clock_prompt)${virtualenv}${hostname} ${bold_cyan}\W $(scm_prompt_char_info)${ret_status}→ ${normal}"
-    PS1="$(clock_prompt)${reset_color}${virtual_env_color}${virtualenv}${reset_color}$(scm_prompt_char_info)${ret_status}${bold_cyan} ${PWD}${very_gray} -- ${hostname}"$'\n'"${reset_color}> ${normal}"
+    PS1="$(clock_prompt)${reset_color}${virtual_env_color}${virtualenv}${reset_color}$(scm_prompt_char_info)${ret_status}${bold_cyan} ${PWD}${very_gray} -- ${hostname}"$'\n'"${bold_cyan}> ${normal}"
 }
 
 safe_append_prompt_command prompt_command
